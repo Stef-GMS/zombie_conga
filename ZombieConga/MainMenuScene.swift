@@ -37,18 +37,35 @@ class MainMenuScene: SKScene {
     let background = SKSpriteNode(imageNamed: "MainMenu")
     background.position = CGPoint(x: size.width/2, y: size.height/2)
     addChild(background)
+    proceedToGame()
   }
   
-  func sceneTapped() {
-    let myScene = GameScene(size: size)
-    myScene.scaleMode = scaleMode
-    let reveal = SKTransition.doorway(withDuration: 1.5)
-    view?.presentScene(myScene, transition: reveal)
+  func proceedToGame() {
+    
+    let wait = SKAction.wait(forDuration: 1.0)
+    
+    let block = SKAction.run {
+      let myScene = GameScene(size: self.size)
+      myScene.scaleMode = self.scaleMode
+      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+      self.view?.presentScene(myScene, transition: reveal)
+    }
+    
+    self.run(SKAction.sequence([wait, block]))    
+    
   }
+  
+//  func sceneTapped() {
+//    let myScene = GameScene(size: size)
+//    myScene.scaleMode = scaleMode
+//    let reveal = SKTransition.doorway(withDuration: 1.5)
+//    view?.presentScene(myScene, transition: reveal)
+//  }
 
-  override func touchesBegan(_ touches: Set<UITouch>,
-                             with event: UIEvent?) {
-    sceneTapped()
-  }
+  
+//  override func touchesBegan(_ touches: Set<UITouch>,
+//                             with event: UIEvent?) {
+//    sceneTapped()
+//  }
 
 }

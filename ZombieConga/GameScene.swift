@@ -121,6 +121,7 @@ class GameScene: SKScene {
 
     // debugDrawPlayableArea()
 
+    // Stef uncomment line below if commented out
     playBackgroundMusic(filename: "backgroundMusic.mp3")
 
     addChild(cameraNode)
@@ -128,14 +129,16 @@ class GameScene: SKScene {
     cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
 
     livesLabel.text = "Lives: X"
-    livesLabel.fontColor = SKColor.black
+    livesLabel.fontColor = SKColor.white //SKColor.black
     livesLabel.fontSize = 100
     livesLabel.zPosition = 150
     livesLabel.horizontalAlignmentMode = .left
-    livesLabel.verticalAlignmentMode = .bottom
+    livesLabel.verticalAlignmentMode = .top  //.bottom
     livesLabel.position = CGPoint(
-      x: -playableRect.size.width/2 + CGFloat(20),
-      y: -playableRect.size.height/2 + CGFloat(20))
+//      x: -playableRect.size.width/2 + CGFloat(20),
+//      y: -playableRect.size.height/2 + CGFloat(20))
+    x: -playableRect.size.width/2 + CGFloat(20),
+    y: -playableRect.size.height/2 - CGFloat(50))
     cameraNode.addChild(livesLabel)
 
   }
